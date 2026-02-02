@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales POS | Marvin Skincare</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pos-layout" id="pos-layout">
+        <!-- 1. Sidebar (Desktop) -->
+        <nav class="sidebar d-none d-lg-block" style="width: 260px; flex-shrink: 0;">
+            <div class="px-4 py-5 text-center">
+                <img src="../images/logo.png" alt="Marvin Logo" class="img-fluid mb-3"
+                    style="max-height: 80px; filter: brightness(0) invert(1);">
+                <p class="text-muted small letter-spacing-2">AGENT DASHBOARD</p>
+            </div>
+            <div class="d-flex flex-column gap-2 px-3">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                </a>
+                <a href="pos.html" class="nav-link active">
+                    <i class="fas fa-cash-register"></i> <span>Sales POS</span>
+                </a>
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-history"></i> <span>Order History</span>
+                </a>
+                <a href="inventory.html" class="nav-link">
+                    <i class="fas fa-boxes"></i> <span>Stock & Inventory</span>
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user-cog"></i> <span>My Profile</span>
+                </a>
+            </div>
+            <div class="mt-auto p-4">
+                <a href="login.html" class="btn btn-outline-danger w-100 rounded-pill"><i
+                        class="fas fa-sign-out-alt me-2"></i> Logout</a>
+            </div>
+        </nav>
+
+        <!-- Main POS Area -->
+        <div class="main-content-area">
+            <!-- Mobile Header -->
+            <div class="mobile-header d-lg-none mb-3">
+                <img src="../images/logo.png" alt="Logo">
+                <button class="btn btn-link p-0" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="pos-header">
+                <div>
+                    <h2 class="fw-bold font-playfair display-6">New Sale</h2>
+                    <p class="text-muted">Lagos Mainland Branch • <span id="currentDate"></span></p>
+                </div>
+                <!-- Search -->
+                <div class="d-none d-md-block" style="width: 300px;">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3"><i
+                                class="fas fa-search text-muted"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-start-0 rounded-end-pill py-2"
+                            placeholder="Search products...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="category-filter-scroll" id="categoryContainer">
+                <button class="cat-btn active" onclick="filterPosProducts('all')">All Items</button>
+                <button class="cat-btn" onclick="filterPosProducts('watches')">Watches</button>
+                <button class="cat-btn" onclick="filterPosProducts('perfumes')">Perfumes</button>
+                <button class="cat-btn" onclick="filterPosProducts('skincare')">Skin Care</button>
+                <button class="cat-btn" onclick="filterPosProducts('adult')">Adult Toys</button>
+            </div>
+
+            <!-- Mobile Search (Visible only on mobile) -->
+            <div class="d-md-none mb-3">
+                <input type="text" class="form-control rounded-pill" placeholder="Search products..." id="mobileSearch">
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <!-- Mobile Close Button -->
+            <div class="d-lg-none p-3 text-end">
+                <button class="btn btn-light rounded-circle" onclick="toggleCart()"><i
+                        class="fas fa-times"></i></button>
+            </div>
+
+            <div class="p-4 border-bottom">
+                <h5 class="fw-bold font-playfair"><i class="fas fa-shopping-cart me-2"></i>Current Order</h5>
+            </div>
+
+            <div class="cart-items-container" id="cartItemsContainer">
+                <!-- Empty State -->
+                <div class="text-center text-muted mt-5">
+                    <i class="fas fa-basket-shopping fa-3x mb-3 opacity-25"></i>
+                    <p>Cart is currently empty</p>
+                    <small>Select items from the grid to add them.</small>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="mb-3">
+                    <label class="small fw-bold text-uppercase text-muted">Customer Name</label>
+                    <input type="text" class="form-control border-0 bg-light rounded-3 px-3 py-2 mt-1"
+                        placeholder="Walk-in Customer" id="customerName">
+                </div>
+                <div class="mb-3">
+                    <label class="small fw-bold text-uppercase text-muted">Phone Number</label>
+                    <input type="tel" class="form-control border-0 bg-light rounded-3 px-3 py-2 mt-1"
+                        placeholder="080..." id="customerPhone">
+                </div>
+
+                <!-- Payment Toggle Moved Here -->
+                <div class="d-flex gap-2 mb-3">
+                    <button class="btn btn-sm btn-dark flex-fill rounded-pill py-2" onclick="setPaymentMode('cash')"
+                        id="btnCash">Cash</button>
+                    <button class="btn btn-sm btn-outline-dark flex-fill rounded-pill py-2"
+                        onclick="setPaymentMode('transfer')" id="btnTransfer">Transfer</button>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span class="fw-bold" id="cartSubtotal">₦0</span>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <h4 class="fw-bold font-playfair">Total</h4>
+                    <h4 class="fw-bold text-primary" id="cartTotal">₦0</h4>
+                </div>
+                <button class="btn btn-premium w-100 py-3 rounded-4" onclick="processCheckout()">
+                    CONFIRM PAYMENT <i class="fas fa-check-circle ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile FAB Cart Trigger -->
+    <div class="fab-cart" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light"
+            style="font-size: 0.6rem; padding: 4px 6px;" id="cartCountFab">0</span>
+    </div>
+
+    <!-- Mobile Offcanvas Menu (Dark) -->
+    <div class="offcanvas offcanvas-start offcanvas-dark" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <img src="../images/logo.png" alt="Marvin Logo" style="max-height: 40px; filter: brightness(0) invert(1);">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-3">
+                <a href="index.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="pos.html" class="nav-link active"><i class="fas fa-cash-register"></i> Sales POS</a>
+                <a href="orders.html" class="nav-link"><i class="fas fa-history"></i> Order History</a>
+                <a href="inventory.html" class="nav-link"><i class="fas fa-boxes"></i> Inventory</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <hr class="border-secondary">
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

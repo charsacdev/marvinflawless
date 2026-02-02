@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Marvin Skincare</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Toggle Button -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h4 class="brand-name mb-0 text-gold" style="font-family: 'Playfair Display', serif; color: #D4AF37;">MARVIN
+            </h4>
+            <small class="text-muted">ADMIN PANEL</small>
+        </div>
+        <div class="sidebar-menu">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="categories.html" class="nav-link">
+                    <i class="fas fa-tags"></i> Categories
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="products.html" class="nav-link">
+                    <i class="fas fa-box"></i> Products
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="branches.html" class="nav-link">
+                    <i class="fas fa-store"></i> Branches
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="agents.html" class="nav-link">
+                    <i class="fas fa-users"></i> Agents
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="customers.html" class="nav-link">
+                    <i class="fas fa-user-friends"></i> Customers
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="analytics.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="settings.html" class="nav-link">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </div>
+            <hr class="mx-3 opacity-10">
+            <div class="nav-item">
+                <a href="../index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="fw-bold">System Overview</h3>
+                <p class="text-muted">Head Office + All Branches data.</p>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-lg-3">
+                <div class="stat-card text-center text-lg-start">
+                    <div class="stat-icon icon-sales mx-auto mx-lg-0">
+                        <i class="fas fa-naira-sign"></i>
+                    </div>
+                    <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Sales</h6>
+                    <h3 class="mb-0 fw-bold">₦2,450,000</h3>
+                    <small class="text-success fw-bold"><i class="fas fa-arrow-up me-1"></i> +12.5%</small>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card text-center text-lg-start">
+                    <div class="stat-icon icon-profit mx-auto mx-lg-0">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Profit</h6>
+                    <h3 class="mb-0 fw-bold">₦850,000</h3>
+                    <small class="text-success fw-bold"><i class="fas fa-arrow-up me-1"></i> +8.2%</small>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card text-center text-lg-start">
+                    <div class="stat-icon icon-orders mx-auto mx-lg-0">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h6 class="text-muted mb-1 text-uppercase small fw-bold">Orders</h6>
+                    <h3 class="mb-0 fw-bold">142</h3>
+                    <small class="text-danger fw-bold"><i class="fas fa-arrow-down me-1"></i> -3.1%</small>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card text-center text-lg-start h-100">
+                    <div class="stat-icon icon-stock mx-auto mx-lg-0">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h6 class="text-muted mb-1 text-uppercase small fw-bold">Inventory Alert</h6>
+                    <h3 class="mb-0 fw-bold">12</h3>
+                    <small class="text-muted">Low stock across system</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <!-- Top Products -->
+            <div class="col-12 col-xl-6">
+                <div class="table-container h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold mb-0">Top Products</h5>
+                        <a href="products.html" class="text-gold text-decoration-none small fw-bold">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Sales</th>
+                                    <th>Profit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-3 bg-light p-2 me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-spray-can text-gold"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-bold">Glow Oil</div>
+                                                <small class="text-muted">Body Care</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>₦5,500</td>
+                                    <td>120</td>
+                                    <td class="text-success fw-bold">₦150,000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-3 bg-light p-2 me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-soap text-gold"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-bold">Brightening Soap</div>
+                                                <small class="text-muted">Cleanser</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>₦3,500</td>
+                                    <td>85</td>
+                                    <td class="text-success fw-bold">₦95,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="col-12 col-xl-6">
+                <div class="table-container h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold mb-0">Recent Orders</h5>
+                        <a href="orders.html" class="text-gold text-decoration-none small fw-bold">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="recentOrders" class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold text-muted">#9832</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>₦12,500</td>
+                                    <td><span class="badge rounded-pill badge-paid">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-muted">#9831</td>
+                                    <td>Michael Ade</td>
+                                    <td>₦8,000</td>
+                                    <td><span class="badge rounded-pill badge-pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#recentOrders').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+                "order": [[0, "desc"]]
+            });
+
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

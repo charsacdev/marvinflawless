@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registry | Marvin Skincare</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Toggle Button -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h4 class="brand-name mb-0" style="font-family: 'Playfair Display', serif; color: #D4AF37;">MARVIN</h4>
+            <small class="text-muted">ADMIN PANEL</small>
+        </div>
+        <div class="sidebar-menu">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="products.html" class="nav-link">
+                    <i class="fas fa-box"></i> Products
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="branches.html" class="nav-link">
+                    <i class="fas fa-store"></i> Branches
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="categories.html" class="nav-link">
+                    <i class="fas fa-tags"></i> Categories
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="agents.html" class="nav-link">
+                    <i class="fas fa-users"></i> Agents
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="customers.html" class="nav-link active">
+                    <i class="fas fa-user-friends"></i> Customers
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="analytics.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="settings.html" class="nav-link">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </div>
+            <hr class="mx-3 opacity-10">
+            <div class="nav-item">
+                <a href="../index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <div class="mb-4">
+            <h3 class="fw-bold">Customer Management</h3>
+            <p class="text-muted">View customer history and loyalty.</p>
+        </div>
+
+        <!-- Customer Table -->
+        <div class="table-container">
+            <div class="table-responsive">
+                <table id="customersTable" class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Contact</th>
+                            <th>Total Orders</th>
+                            <th>Total Spent</th>
+                            <th>Last Order</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="fw-bold">Sarah Johnson</div>
+                                <small class="text-muted text-uppercase small">Premium Member</small>
+                            </td>
+                            <td>
+                                <div class="small"><i class="fas fa-phone me-2 text-muted"></i> +234 812 345 6789</div>
+                            </td>
+                            <td class="fw-bold text-center">12</td>
+                            <td class="fw-bold text-primary">₦145,000</td>
+                            <td>Jan 28, 2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-light border" data-bs-toggle="modal"
+                                    data-bs-target="#customerHistoryModal">
+                                    <i class="fas fa-history text-gold me-1"></i> History
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="fw-bold">Michael Ade</div>
+                                <small class="text-muted text-uppercase small">Regular</small>
+                            </td>
+                            <td>
+                                <div class="small"><i class="fas fa-phone me-2 text-muted"></i> +234 703 111 2222</div>
+                            </td>
+                            <td class="fw-bold text-center">4</td>
+                            <td class="fw-bold text-primary">₦32,000</td>
+                            <td>Jan 30, 2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-light border" data-bs-toggle="modal"
+                                    data-bs-target="#customerHistoryModal">
+                                    <i class="fas fa-history text-gold me-1"></i> History
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Customer History Modal -->
+    <div class="modal fade" id="customerHistoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="fw-bold mb-0">Customer Purchase History</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light sticky-top">
+                                <tr class="small text-uppercase">
+                                    <th class="ps-3">Date</th>
+                                    <th>Order Info</th>
+                                    <th>Items Purchased</th>
+                                    <th class="text-end pe-3">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-3 text-nowrap">Jan 28, 2024</td>
+                                    <td>
+                                        <div class="fw-bold small">Order #ORD-9832</div>
+                                        <span class="badge bg-light text-dark border">Lagos Main</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled mb-0 small text-muted">
+                                            <li>• Glow Oil (100ml) x1</li>
+                                            <li>• Brightening Soap x2</li>
+                                        </ul>
+                                    </td>
+                                    <td class="fw-bold text-primary text-end pe-3">₦12,500</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3 text-nowrap">Dec 15, 2023</td>
+                                    <td>
+                                        <div class="fw-bold small">Order #ORD-9100</div>
+                                        <span class="badge bg-light text-dark border">Head Office</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled mb-0 small text-muted">
+                                            <li>• Full Skin Glow Kit x1</li>
+                                        </ul>
+                                    </td>
+                                    <td class="fw-bold text-primary text-end pe-3">₦45,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3 text-nowrap">Nov 02, 2023</td>
+                                    <td>
+                                        <div class="fw-bold small">Order #ORD-8821</div>
+                                        <span class="badge bg-light text-dark border">Website</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled mb-0 small text-muted">
+                                            <li>• Vitamin C Serum x2</li>
+                                            <li>• Face Cream x1</li>
+                                        </ul>
+                                    </td>
+                                    <td class="fw-bold text-primary text-end pe-3">₦28,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3 text-nowrap">Oct 20, 2023</td>
+                                    <td>
+                                        <div class="fw-bold small">Order #ORD-7554</div>
+                                        <span class="badge bg-light text-dark border">Lagos Main</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled mb-0 small text-muted">
+                                            <li>• Body Lotion (500ml) x1</li>
+                                        </ul>
+                                    </td>
+                                    <td class="fw-bold text-primary text-end pe-3">₦18,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#customersTable').DataTable({
+                "order": [[3, "desc"]],
+                "pageLength": 10
+            });
+
+            $('#menuToggle, #sidebarOverlay').on('click', function () {
+                $('#sidebar, #sidebarOverlay').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

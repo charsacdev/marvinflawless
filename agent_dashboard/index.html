@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard | Marvin Skincare</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="layout-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar d-none d-lg-block" style="width: 260px; flex-shrink: 0;">
+            <div class="px-4 py-5 text-center">
+                <img src="../images/logo.png" alt="Marvin Logo" class="img-fluid mb-3"
+                    style="max-height: 80px; filter: brightness(0) invert(1);">
+                <p class="text-muted small letter-spacing-2">AGENT DASHBOARD</p>
+            </div>
+            <div class="d-flex flex-column gap-2 px-3">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                </a>
+                <a href="pos.html" class="nav-link">
+                    <i class="fas fa-cash-register"></i> <span>Sales POS</span>
+                </a>
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-history"></i> <span>Order History</span>
+                </a>
+                <a href="inventory.html" class="nav-link">
+                    <i class="fas fa-boxes"></i> <span>Stock & Inventory</span>
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user-cog"></i> <span>My Profile</span>
+                </a>
+            </div>
+            <div class="mt-auto p-4">
+                <a href="login.html" class="btn btn-outline-danger w-100 rounded-pill"><i
+                        class="fas fa-sign-out-alt me-2"></i> Logout</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <div class="mobile-header rounded-bottom-4">
+                <img src="../images/logo.png" alt="Logo" style="height: 35px; filter: invert(1);">
+                <button class="btn btn-link text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="fw-bold font-playfair display-6">Welcome, Sarah</h2>
+                    <p class="text-muted">Here's what's happening in your branch today.</p>
+                </div>
+                <a href="pos.html" class="btn btn-dark rounded-pill px-4 shadow-sm">
+                    <i class="fas fa-plus me-2"></i> New Sale
+                </a>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="row g-4 mb-4">
+                <!-- Today's Sales -->
+                <div class="col-md-6 col-xl-4">
+                    <div class="stat-card-premium">
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div>
+                                <p class="text-muted fw-bold small text-uppercase mb-1">Total Sales Today</p>
+                                <h2 class="fw-bold display-6">₦245,800</h2>
+                            </div>
+                            <div class="bg-success-subtle text-success rounded-circle p-2">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                        <div class="row g-0 rounded-4 bg-light p-3">
+                            <div class="col-6 border-end pe-3">
+                                <small class="text-muted d-block mb-1">Cash</small>
+                                <h5 class="fw-bold mb-0">₦120,300</h5>
+                            </div>
+                            <div class="col-6 ps-3">
+                                <small class="text-muted d-block mb-1">Transfer</small>
+                                <h5 class="fw-bold mb-0">₦125,500</h5>
+                            </div>
+                        </div>
+                        <i class="fas fa-coins stat-icon-bg"></i>
+                    </div>
+                </div>
+
+                <!-- Orders Count -->
+                <div class="col-md-6 col-xl-4">
+                    <div class="stat-card-premium">
+                        <p class="text-muted fw-bold small text-uppercase mb-1">Transactions</p>
+                        <h2 class="fw-bold display-6 mb-4">24 <span class="fs-5 text-muted">Orders</span></h2>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-success-subtle text-success rounded-pill px-3">18 Completed</span>
+                            <span class="badge bg-warning-subtle text-warning rounded-pill px-3">6 Processing</span>
+                        </div>
+                        <i class="fas fa-shopping-bag stat-icon-bg"></i>
+                    </div>
+                </div>
+
+                <!-- Stock Alert -->
+                <div class="col-md-12 col-xl-4">
+                    <div class="stat-card-premium border-danger-subtle bg-danger-subtle bg-opacity-10">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-white p-2 rounded-circle text-danger shadow-sm">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h5 class="fw-bold text-danger mb-0">Low Stock Alert</h5>
+                        </div>
+                        <p class="text-muted small">The following items are running low. Please contact admin for
+                            restock.</p>
+                        <ul class="list-unstyled mb-0">
+                            <li
+                                class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2 border-danger-subtle">
+                                <span class="fw-bold text-dark font-playfair">Radiance Toner</span>
+                                <span class="badge bg-danger text-white rounded-pill">5 Left</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-dark font-playfair">Gold Set</span>
+                                <span class="badge bg-danger text-white rounded-pill">0 Left</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Table -->
+            <div class="table-premium p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold font-playfair mb-0">Recent Transactions</h5>
+                    <a href="orders.html" class="btn btn-sm btn-outline-dark rounded-pill">View All</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="recentOrders" class="table table-hover align-middle w-100">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-3 rounded-start-pill border-0">Order ID</th>
+                                <th class="border-0">Customer</th>
+                                <th class="border-0">Total</th>
+                                <th class="border-0">Method</th>
+                                <th class="pe-3 rounded-end-pill border-0 text-end">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-3 fw-bold">#MS-001</td>
+                                <td>Chidinma Okoro</td>
+                                <td class="fw-bold">₦25,000</td>
+                                <td><span class="badge bg-secondary-subtle text-dark border">Cash</span></td>
+                                <td class="text-end pe-3"><span
+                                        class="badge bg-success-subtle text-success rounded-pill">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-bold">#MS-002</td>
+                                <td>Adekunle Smith</td>
+                                <td class="fw-bold">₦8,000</td>
+                                <td><span class="badge bg-primary-subtle text-primary border">Transfer</span></td>
+                                <td class="text-end pe-3"><span
+                                        class="badge bg-warning-subtle text-warning rounded-pill">Processing</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-bold">#MS-003</td>
+                                <td>Peace John</td>
+                                <td class="fw-bold">₦42,000</td>
+                                <td><span class="badge bg-secondary-subtle text-dark border">Cash</span></td>
+                                <td class="text-end pe-3"><span
+                                        class="badge bg-success-subtle text-success rounded-pill">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Offcanvas Menu (Dark) -->
+    <div class="offcanvas offcanvas-start offcanvas-dark" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <img src="../images/logo.png" alt="Marvin Logo" style="max-height: 40px; filter: brightness(0) invert(1);">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-3">
+                <a href="index.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="pos.html" class="nav-link"><i class="fas fa-cash-register"></i> Sales POS</a>
+                <a href="orders.html" class="nav-link"><i class="fas fa-history"></i> Order History</a>
+                <a href="inventory.html" class="nav-link"><i class="fas fa-boxes"></i> Inventory</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <hr class="border-secondary">
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#recentOrders').DataTable({
+                responsive: true,
+                paging: false,
+                info: false,
+                searching: false
+            });
+        });
+    </script>
+</body>
+
+</html>

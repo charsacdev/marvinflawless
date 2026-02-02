@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Marvin Skincare</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        :root {
+            --primary-color: #D4AF37;
+            --secondary-color: #AA8C2C;
+            --text-dark: #1A1A1A;
+            --text-muted: #6c757d;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #FFFDF5, #F5E6CC);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 32px;
+            padding: 48px;
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.15);
+        }
+
+        .logo-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-box i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .logo-box h2 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .input-group-custom i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            z-index: 10;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: white;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-auth {
+            background: var(--text-dark);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 10px;
+        }
+
+        .btn-auth:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            color: white;
+        }
+
+        .forgot-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .forgot-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <div class="glass-card">
+            <div class="logo-box">
+                <i class="fas fa-crown"></i>
+                <h2>MARVIN</h2>
+                <p class="text-muted small mt-2">ADMIN PORTAL ACCESS</p>
+            </div>
+
+            <form action="index.html">
+                <div class="mb-1">
+                    <label class="form-label">Email Address</label>
+                    <div class="input-group-custom">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="form-control-custom" placeholder="admin@marvin.com" required>
+                    </div>
+                </div>
+
+                <div class="mb-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="form-label">Password</label>
+                        <a href="forgot-password.html" class="forgot-link mb-2">Forgot Password?</a>
+                    </div>
+                    <div class="input-group-custom">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" class="form-control-custom" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="form-check mb-4 ms-1">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label text-muted small" for="rememberMe">
+                        Keep me signed in
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    Sign In to Dashboard <i class="fas fa-chevron-right ms-2"></i>
+                </button>
+            </form>
+        </div>
+        <p class="footer-text">
+            &copy; 2026 Marvin Skincare. Admin System.
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
