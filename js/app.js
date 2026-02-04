@@ -95,7 +95,7 @@ const NIGERIAN_STATES = [
 let cart = JSON.parse(localStorage.getItem('marvinCart')) || [];
 
 // Constants
-const WHATSAPP_NUMBER = "2348122656972";
+const WHATSAPP_NUMBER = "2347089220147";
 const BANK_DETAILS = {
     bank: "Zenith Bank",
     accountName: "Marvin Global Enterprise",
