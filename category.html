@@ -150,7 +150,7 @@
                 container.innerHTML = '<div class="col-12 text-center py-5"><h3 class="text-muted">Coming soon to this collection.</h3></div>';
             } else {
                 container.innerHTML = filteredProducts.map((prod, index) => `
-                    <div class="col-6 col-md-4 col-lg-3 fade-in-up" style="animation-delay: ${index * 0.1}s">
+                    <div class="col-12 col-md-4 col-lg-3 fade-in-up" style="animation-delay: ${index * 0.1}s">
                         <div class="product-card">
                             <div class="product-image-wrapper" onclick="showProductDetails(${prod.id})">
                                 <img src="${prod.image}" alt="${prod.name}">

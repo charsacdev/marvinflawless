@@ -294,7 +294,7 @@ function renderProducts(filter = 'All') {
     const filtered = filter === 'All' ? products : products.filter(p => p.category === filter);
 
     container.innerHTML = filtered.map((prod, index) => `
-        <div class="col-6 col-md-4 col-lg-3 fade-in-up" style="animation-delay: ${index * 0.1}s">
+        <div class="col-12 col-md-4 col-lg-3 fade-in-up" style="animation-delay: ${index * 0.1}s">
             <div class="product-card">
                 <div class="product-image-wrapper" onclick="showProductDetails(${prod.id})">
                     <img src="${prod.image}" alt="${prod.name}">
